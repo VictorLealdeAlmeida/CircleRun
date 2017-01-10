@@ -45,7 +45,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             self.player.run(action)
         }
         
-            print("----")
+            //print("----")
     }
     
     

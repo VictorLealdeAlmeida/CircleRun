@@ -20,14 +20,18 @@ extension GameScene{
                 let currentX = self.player.position.x
 
                 if (data!.acceleration.x < 0.0) {
+                    if (currentX + CGFloat((data?.acceleration.x)! * 100)) > -300{
                         self.destX = currentX + CGFloat((data?.acceleration.x)! * 100)
+                    }
                 }
                     
                 else if data!.acceleration.x > 0 {
+                    if (currentX + CGFloat((data?.acceleration.x)! * 100)) < 300{
                         self.destX = currentX + CGFloat((data?.acceleration.x)! * 100)
+                    }
                 }
                 
-                    print(self.destX)
+                  //  print(self.destX)
                 
             })
             

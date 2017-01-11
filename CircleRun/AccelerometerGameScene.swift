@@ -12,33 +12,29 @@ import CoreMotion
 
 extension GameScene{
     func motionPlayer(){
-        if motionManager.isAccelerometerAvailable == true {
-            
-            motionManager.startAccelerometerUpdates(to: OperationQueue.current!, withHandler:{
-                data, error in
-                
-                let currentX = self.player.position.x
-
-                if (data!.acceleration.x < 0.0) {
-                    if (currentX + CGFloat((data?.acceleration.x)! * 100)) > self.limitLeft{
-                        self.destX = currentX + CGFloat((data?.acceleration.x)! * 100)
-                    }else{
-                        self.destX = self.limitLeft - 1
-                    }
-                }
-                    
-                else if data!.acceleration.x > 0 {
-                    if (currentX + CGFloat((data?.acceleration.x)! * 100)) < self.limitRight{
-                        self.destX = currentX + CGFloat((data?.acceleration.x)! * 100)
-                    }else{
-                        self.destX = self.limitRight - 1
-                    }
-                }
-                
-                   // print(self.destX)
-                
-            })
-            
+        self.motionManager.startGyroUpdates(to: OperationQueue.current!) { (gyroData: CMGyroData?, NSError) in
+            self.moveRacket()
+            if(NSError != nil) {
+                print("\(NSError)")
+            }
         }
+    }
+    
+    func moveRacket() {
+        
+        let yForce = self.motionManager.gyroData!.rotationRate.y
+        print(yForce)
+        let dxVelocity = self.player.physicsBody?.velocity.dx
+        self.player.physicsBody?.velocity.dx = dxVelocity! + 32*CGFloat(yForce)
+        
+        //"lock" the racket on the game area
+        
+        if (player.position.x) > self.frame.maxX - ((player.size.width)){
+            player.position.x = self.frame.maxX - ((player.size.width))
+        }
+        if (player.position.x) < self.frame.minX + ((player.size.width)){
+            player.position.x = self.frame.minX + ((player.size.width))
+        }
+        
     }
 }

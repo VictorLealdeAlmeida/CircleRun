@@ -17,6 +17,8 @@
 		D4027B531E1C22700098DC6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4027B511E1C22700098DC6E /* LaunchScreen.storyboard */; };
 		D4027B5E1E1C32340098DC6E /* CreatePlayerGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4027B5D1E1C32340098DC6E /* CreatePlayerGameScene.swift */; };
 		D4027B611E1FC1810098DC6E /* AccelerometerGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4027B601E1FC1810098DC6E /* AccelerometerGameScene.swift */; };
+		D4AF83BE1E26B0DA00655923 /* CreateObjectGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF83BD1E26B0DA00655923 /* CreateObjectGameScene.swift */; };
+		D4AF83C01E26B15400655923 /* MoveObstacleGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF83BF1E26B15400655923 /* MoveObstacleGameScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		D4027B541E1C22700098DC6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4027B5D1E1C32340098DC6E /* CreatePlayerGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePlayerGameScene.swift; sourceTree = "<group>"; };
 		D4027B601E1FC1810098DC6E /* AccelerometerGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccelerometerGameScene.swift; sourceTree = "<group>"; };
+		D4AF83BD1E26B0DA00655923 /* CreateObjectGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateObjectGameScene.swift; sourceTree = "<group>"; };
+		D4AF83BF1E26B15400655923 /* MoveObstacleGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveObstacleGameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				D4027B5D1E1C32340098DC6E /* CreatePlayerGameScene.swift */,
+				D4AF83BD1E26B0DA00655923 /* CreateObjectGameScene.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -107,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				D4027B601E1FC1810098DC6E /* AccelerometerGameScene.swift */,
+				D4AF83BF1E26B15400655923 /* MoveObstacleGameScene.swift */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -189,8 +195,10 @@
 				D4027B491E1C22700098DC6E /* GameScene.swift in Sources */,
 				D4027B4B1E1C22700098DC6E /* GameViewController.swift in Sources */,
 				D4027B611E1FC1810098DC6E /* AccelerometerGameScene.swift in Sources */,
+				D4AF83BE1E26B0DA00655923 /* CreateObjectGameScene.swift in Sources */,
 				D4027B431E1C22700098DC6E /* AppDelegate.swift in Sources */,
 				D4027B5E1E1C32340098DC6E /* CreatePlayerGameScene.swift in Sources */,
+				D4AF83C01E26B15400655923 /* MoveObstacleGameScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +362,7 @@
 				D4027B591E1C22700098DC6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -47,48 +47,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         limitRight = 0.8*(size.width/2)
         limitLeft = -0.8*(size.width/2)
-        print(limitRight)
         
         createPlayer()
-      //  motionPlayer()
+        motionPlayer()
         
-        self.motionManager.startGyroUpdates(to: OperationQueue.current!) { (gyroData: CMGyroData?, NSError) in
-            self.moveRacket()
-            if(NSError != nil) {
-                print("\(NSError)")
-            }
-            
-        }
+        createObject()
         
     }
     
     
     override func update(_ currentTime: TimeInterval) {
-      //  if destX < limitLeft && destX > limitRight{
-       //     let action = SKAction.moveTo(x: destX, duration: 0.1)
-        //    self.player.run(action)
-        //}
         
     }
     
-    func moveRacket() {
-        
-        let yForce = self.motionManager.gyroData!.rotationRate.y
-        print(yForce)
-        let dxVelocity = self.player.physicsBody?.velocity.dx
-        self.player.physicsBody?.velocity.dx = dxVelocity! + 32*CGFloat(yForce)
-        
-        //"lock" the racket on the game area
-        
-        if (player.position.x) > self.frame.maxX - ((player.size.width)){
-            player.position.x = self.frame.maxX - ((player.size.width))
-        }
-        if (player.position.x) < self.frame.minX + ((player.size.width)){
-            player.position.x = self.frame.minX + ((player.size.width))
-        }
-        
-        
-    }
 
     
 }

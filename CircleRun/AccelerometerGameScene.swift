@@ -23,7 +23,6 @@ extension GameScene{
     func moveRacket() {
         
         let yForce = self.motionManager.gyroData!.rotationRate.y
-        print(yForce)
         let dxVelocity = self.player.physicsBody?.velocity.dx
         self.player.physicsBody?.velocity.dx = dxVelocity! + 32*CGFloat(yForce)
         

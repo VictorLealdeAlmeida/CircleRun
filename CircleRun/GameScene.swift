@@ -23,13 +23,15 @@ struct PhysicsCategory {
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
     
+    //CreatePlayer
     var player = SKSpriteNode(imageNamed: "circle")
-    //var motionManager = CMMotionManager()
-    var destX:CGFloat  = 0.0
     
+    //CreateObject
+    var signBorn = true
+    
+    //Motion
     var limitRight : CGFloat = 0.0
     var limitLeft : CGFloat = 0.0
-    
     var motionManager : CMMotionManager = {
         let motion = CMMotionManager()
         motion.accelerometerUpdateInterval = 0.01

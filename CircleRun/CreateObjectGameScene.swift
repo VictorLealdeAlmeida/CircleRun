@@ -11,10 +11,21 @@ import GameplayKit
 
 extension GameScene{
     
+    func randomBorn() -> CGFloat{
+        if signBorn{
+            signBorn = false
+            return CGFloat(arc4random_uniform(4) + 1)/10
+        }else{
+            signBorn = true
+            return -CGFloat(arc4random_uniform(4) + 1)/10
+        }
+    }
+    
+    
     func createObject(){
         let obstacle = SKSpriteNode(imageNamed: "square")
         
-        obstacle.position = CGPoint(x: size.width * 0.0, y: size.height * -0.5)
+        obstacle.position = CGPoint(x: size.width * randomBorn(), y: size.height * -0.5)
         obstacle.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2)
         obstacle.zPosition = 10
         obstacle.setScale(0.0002*size.width)

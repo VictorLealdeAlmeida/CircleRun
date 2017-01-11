@@ -10,6 +10,7 @@ import SpriteKit
 import GameplayKit
 
 extension GameScene{
+    
     func moveObstacleWithBorn() -> SKAction{
         
         let actualDuration = 3.0 //Speed

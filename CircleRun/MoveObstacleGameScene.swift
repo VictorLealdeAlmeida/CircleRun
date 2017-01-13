@@ -13,13 +13,15 @@ extension GameScene{
     
     func moveObstacleWithBorn() -> SKAction{
         
-        let actualDuration = 3.0 //Speed
-        let actionMoveOne = SKAction.moveTo(y:-size.height * 0.33, duration: TimeInterval(actualDuration*0.165))
-        let actionMoveTwo = SKAction.moveTo(y:size.height/2, duration: TimeInterval(actualDuration*0.835))
+        let actualDuration = speedObj 
+        let actionMoveOneY = SKAction.moveTo(y:-size.height * 0.33, duration: TimeInterval(actualDuration*0.165))
+        let actionMoveTwoY = SKAction.moveTo(y:size.height/2, duration: TimeInterval(actualDuration*0.835))
+        let actionMoveX = SKAction.moveTo(x:size.width * randomEndPosition(), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
-        let sequence = SKAction.sequence([actionMoveOne, SKAction.run(createObject), actionMoveTwo, actionMoveDone])
+        let sequence = SKAction.sequence([actionMoveOneY, SKAction.run(createObject), actionMoveTwoY, actionMoveDone])
+        let join = SKAction.group([actionMoveX, sequence])
         
-        return sequence
+        return join
         
     }
 }

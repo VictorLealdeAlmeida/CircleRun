@@ -28,6 +28,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     //CreateObject
     var signBorn = true
+
+    //MoveObstacle
+    var speedObj = 3.0
     
     //Motion
     var limitRight : CGFloat = 0.0

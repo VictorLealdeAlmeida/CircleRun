@@ -16,7 +16,7 @@ extension GameScene{
     func didBegin(_ contact: SKPhysicsContact) {
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
-        if (contact.bodyA.categoryBitMask >= contact.bodyB.categoryBitMask) {
+        if (contact.bodyA.area >= contact.bodyB.area) {
             firstBody = contact.bodyA;
             secondBody = contact.bodyB;
         }
@@ -24,18 +24,26 @@ extension GameScene{
             firstBody = contact.bodyB;
             secondBody = contact.bodyA;
         }
-        print(2223)
         
-        if(contact.bodyA.categoryBitMask == PhysicsCategory.Player && contact.bodyB.categoryBitMask == PhysicsCategory.ObjGood){
+        if(contact.bodyB.categoryBitMask == PhysicsCategory.Player && contact.bodyA.categoryBitMask == PhysicsCategory.ObjGood){
             
             //---PegarObjGood---//
-            playerDidCollideWithCoin(firstBody.node as! SKSpriteNode, playerP: secondBody.node as! SKSpriteNode)
-            print(22)
+            playerDidCollideWithObjGood(firstBody.node as! SKSpriteNode, objO: secondBody.node as! SKSpriteNode)
+            
+        }else if(contact.bodyB.categoryBitMask == PhysicsCategory.Player && contact.bodyA.categoryBitMask == PhysicsCategory.ObjBad){
+            
+            //---PegarObjGood---//
+            playerDidCollideWithObjBad(firstBody.node as! SKSpriteNode, objO: secondBody.node as! SKSpriteNode)
         }
+      
     }
     
-    func playerDidCollideWithCoin(_ objO:SKSpriteNode, playerP:SKSpriteNode) {
-        objO.removeAllChildren()
+    func playerDidCollideWithObjGood(_ playerP:SKSpriteNode, objO:SKSpriteNode) {
+        objO.removeFromParent()
+    }
+    
+    func playerDidCollideWithObjBad(_ playerP:SKSpriteNode, objO:SKSpriteNode) {
+        playerP.removeFromParent()
     }
     
 

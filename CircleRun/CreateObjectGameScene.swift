@@ -67,9 +67,9 @@ extension GameScene{
         obstacle.physicsBody = SKPhysicsBody(rectangleOf: obstacle.size)
         obstacle.zPosition = 10
         obstacle.setScale(0.0002*size.width)
-        player.physicsBody?.categoryBitMask = PhysicsCategory.ObjBad
-        player.physicsBody?.collisionBitMask = PhysicsCategory.None
-        player.physicsBody?.contactTestBitMask = PhysicsCategory.Player
+        obstacle.physicsBody?.categoryBitMask = PhysicsCategory.ObjBad
+        obstacle.physicsBody?.collisionBitMask = PhysicsCategory.None
+        obstacle.physicsBody?.contactTestBitMask = PhysicsCategory.Player
         
         return obstacle
     }
@@ -83,9 +83,9 @@ extension GameScene{
         obstacle.physicsBody = SKPhysicsBody(rectangleOf: obstacle.size)
         obstacle.zPosition = 10
         obstacle.setScale(0.0002*size.width)
-        player.physicsBody?.categoryBitMask = PhysicsCategory.ObjGood
-        player.physicsBody?.collisionBitMask = PhysicsCategory.None
-        player.physicsBody?.contactTestBitMask = PhysicsCategory.Player
+        obstacle.physicsBody?.categoryBitMask = PhysicsCategory.ObjGood
+        obstacle.physicsBody?.collisionBitMask = PhysicsCategory.None
+        obstacle.physicsBody?.contactTestBitMask = PhysicsCategory.Player
         
         return obstacle
     }

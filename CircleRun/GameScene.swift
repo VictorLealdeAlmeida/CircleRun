@@ -12,13 +12,10 @@ import CoreMotion
 
 struct PhysicsCategory {
     static let None           : UInt32 = 0
-    static let Player         : UInt32 = 0b0
-    static let ObjGood        : UInt32 = 0b1
-    static let ObjBad         : UInt32 = 0b10
-    static let Sensor         : UInt32 = 0b11
-    static let Torch          : UInt32 = 0b100
-    static let TorchObstacle  : UInt32 = 0b110
-    static let Coin           : UInt32 = 0b111
+    static let Player         : UInt32 = 0b1
+    static let ObjGood        : UInt32 = 0b10
+    static let ObjBad         : UInt32 = 0b11
+    static let Player32       : UInt32 = 0b110
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate{

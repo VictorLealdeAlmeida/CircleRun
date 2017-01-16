@@ -19,6 +19,7 @@
 		D4027B611E1FC1810098DC6E /* AccelerometerGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4027B601E1FC1810098DC6E /* AccelerometerGameScene.swift */; };
 		D4AF83BE1E26B0DA00655923 /* CreateObjectGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF83BD1E26B0DA00655923 /* CreateObjectGameScene.swift */; };
 		D4AF83C01E26B15400655923 /* MoveObstacleGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF83BF1E26B15400655923 /* MoveObstacleGameScene.swift */; };
+		D4AF83C31E29164F00655923 /* ContantGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF83C21E29164F00655923 /* ContantGameScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		D4027B601E1FC1810098DC6E /* AccelerometerGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccelerometerGameScene.swift; sourceTree = "<group>"; };
 		D4AF83BD1E26B0DA00655923 /* CreateObjectGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateObjectGameScene.swift; sourceTree = "<group>"; };
 		D4AF83BF1E26B15400655923 /* MoveObstacleGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveObstacleGameScene.swift; sourceTree = "<group>"; };
+		D4AF83C21E29164F00655923 /* ContantGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContantGameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				D4027B5B1E1C30F70098DC6E /* SKS */,
 				D4027B5C1E1C31E40098DC6E /* Nodes */,
 				D4027B5F1E1FC14D0098DC6E /* Actions */,
+				D4AF83C11E29160000655923 /* Collisions */,
 			);
 			name = GameScene;
 			sourceTree = "<group>";
@@ -115,6 +118,14 @@
 				D4AF83BF1E26B15400655923 /* MoveObstacleGameScene.swift */,
 			);
 			name = Actions;
+			sourceTree = "<group>";
+		};
+		D4AF83C11E29160000655923 /* Collisions */ = {
+			isa = PBXGroup;
+			children = (
+				D4AF83C21E29164F00655923 /* ContantGameScene.swift */,
+			);
+			name = Collisions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4AF83C31E29164F00655923 /* ContantGameScene.swift in Sources */,
 				D4027B491E1C22700098DC6E /* GameScene.swift in Sources */,
 				D4027B4B1E1C22700098DC6E /* GameViewController.swift in Sources */,
 				D4027B611E1FC1810098DC6E /* AccelerometerGameScene.swift in Sources */,

@@ -15,9 +15,9 @@ extension GameScene{
         player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2)
         player.zPosition = 10
         player.setScale(0.0002*size.width)
-      //  player.physicsBody?.categoryBitMask = PhysicsCategory.Player
-       // player.physicsBody?.collisionBitMask = PhysicsCategory.None
-       // player.physicsBody?.contactTestBitMask = PhysicsCategory.Monster | PhysicsCategory.TorchObstacle
+        player.physicsBody?.categoryBitMask = PhysicsCategory.Player
+        player.physicsBody?.collisionBitMask = PhysicsCategory.None
+        player.physicsBody?.contactTestBitMask = PhysicsCategory.ObjGood | PhysicsCategory.ObjBad
         
         addChild(player)
     }

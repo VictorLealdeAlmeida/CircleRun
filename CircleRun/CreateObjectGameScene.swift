@@ -64,12 +64,12 @@ extension GameScene{
         let obstacle = SKSpriteNode(imageNamed: "square")
         
         obstacle.position = CGPoint(x: size.width * randomBornPosition(), y: size.height * -0.5)
-        obstacle.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2)
+        obstacle.physicsBody = SKPhysicsBody(rectangleOf: obstacle.size)
         obstacle.zPosition = 10
         obstacle.setScale(0.0002*size.width)
-        //  player.physicsBody?.categoryBitMask = PhysicsCategory.Player
-        // player.physicsBody?.collisionBitMask = PhysicsCategory.None
-        // player.physicsBody?.contactTestBitMask = PhysicsCategory.Monster | PhysicsCategory.TorchObstacle
+        player.physicsBody?.categoryBitMask = PhysicsCategory.ObjBad
+        player.physicsBody?.collisionBitMask = PhysicsCategory.None
+        player.physicsBody?.contactTestBitMask = PhysicsCategory.Player
         
         return obstacle
     }
@@ -80,12 +80,12 @@ extension GameScene{
         let obstacle = SKSpriteNode(imageNamed: "squareGood")
         
         obstacle.position = CGPoint(x: size.width * randomBornPosition(), y: size.height * -0.5)
-        obstacle.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2)
+        obstacle.physicsBody = SKPhysicsBody(rectangleOf: obstacle.size)
         obstacle.zPosition = 10
         obstacle.setScale(0.0002*size.width)
-        //  player.physicsBody?.categoryBitMask = PhysicsCategory.Player
-        // player.physicsBody?.collisionBitMask = PhysicsCategory.None
-        // player.physicsBody?.contactTestBitMask = PhysicsCategory.Monster | PhysicsCategory.TorchObstacle
+        player.physicsBody?.categoryBitMask = PhysicsCategory.ObjGood
+        player.physicsBody?.collisionBitMask = PhysicsCategory.None
+        player.physicsBody?.contactTestBitMask = PhysicsCategory.Player
         
         return obstacle
     }

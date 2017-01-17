@@ -56,14 +56,26 @@ extension GameScene{
         if playerStatus == 1{
             playerP.removeFromParent()
         }else if playerStatus == 2{
+            effectCollision(node: objO)
             objO.removeFromParent()
             player.run(SKAction.scale(to: 0.00015*size.width, duration: 0.25))
             playerStatus = 1
         }else if playerStatus == 3{
+            effectCollision(node: objO)
             objO.removeFromParent()
             player.run(SKAction.scale(to: 0.0002*size.width, duration: 0.25))
             playerStatus = 2
         }
+    }
+    
+    func effectCollision(node : SKSpriteNode){
+        let starField = SKEmitterNode(fileNamed: "Collision")
+        starField?.position = node.position
+        starField?.zPosition = -3
+        self.addChild(starField!)
+        
+        let sequece = SKAction.sequence([SKAction.fadeAlpha(to: 0, duration: 1),SKAction.removeFromParent()])
+        starField?.run(sequece)
     }
     
 

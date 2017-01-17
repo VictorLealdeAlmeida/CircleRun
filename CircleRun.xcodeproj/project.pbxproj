@@ -22,6 +22,7 @@
 		D4AF83BE1E26B0DA00655923 /* CreateObjectGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF83BD1E26B0DA00655923 /* CreateObjectGameScene.swift */; };
 		D4AF83C01E26B15400655923 /* MoveObstacleGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF83BF1E26B15400655923 /* MoveObstacleGameScene.swift */; };
 		D4AF83C31E29164F00655923 /* ContantGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF83C21E29164F00655923 /* ContantGameScene.swift */; };
+		D4F90E4A1E2E897000295F23 /* Collision.sks in Resources */ = {isa = PBXBuildFile; fileRef = D4F90E491E2E897000295F23 /* Collision.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		D4AF83BD1E26B0DA00655923 /* CreateObjectGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateObjectGameScene.swift; sourceTree = "<group>"; };
 		D4AF83BF1E26B15400655923 /* MoveObstacleGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveObstacleGameScene.swift; sourceTree = "<group>"; };
 		D4AF83C21E29164F00655923 /* ContantGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContantGameScene.swift; sourceTree = "<group>"; };
+		D4F90E491E2E897000295F23 /* Collision.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Collision.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				D488C20D1E2E794A0072C08C /* Stars.sks */,
 				D4027B461E1C22700098DC6E /* Actions.sks */,
 				D488C20F1E2E7EE30072C08C /* Snow.sks */,
+				D4F90E491E2E897000295F23 /* Collision.sks */,
 			);
 			name = SKS;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4F90E4A1E2E897000295F23 /* Collision.sks in Resources */,
 				D4027B4E1E1C22700098DC6E /* Main.storyboard in Resources */,
 				D4027B451E1C22700098DC6E /* GameScene.sks in Resources */,
 				D4027B501E1C22700098DC6E /* Assets.xcassets in Resources */,

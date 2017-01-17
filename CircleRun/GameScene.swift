@@ -9,6 +9,7 @@
 import SpriteKit
 import GameplayKit
 import CoreMotion
+import SceneKit
 
 struct PhysicsCategory {
     static let None           : UInt32 = 0
@@ -55,6 +56,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         motionPlayer()
         
         createObject()
+        
+        let starField = SKEmitterNode(fileNamed: "Snow")
+        starField?.position = CGPoint(x: 0, y: -self.size.height*0.6)
+        starField?.zPosition = -5
+        self.addChild(starField!)
         
     }
     

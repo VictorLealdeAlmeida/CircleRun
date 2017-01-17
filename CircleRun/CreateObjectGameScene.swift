@@ -61,7 +61,7 @@ extension GameScene{
     //BAD
     
     func squareBad() -> SKSpriteNode{
-        let obstacle = SKSpriteNode(imageNamed: "square")
+        let obstacle = SKSpriteNode(imageNamed: "RedBad1")
         
         obstacle.position = CGPoint(x: size.width * randomBornPosition(), y: size.height * -0.5)
         obstacle.physicsBody = SKPhysicsBody(rectangleOf: obstacle.size)
@@ -77,7 +77,7 @@ extension GameScene{
     //GOOD
     
     func squareGood() -> SKSpriteNode{
-        let obstacle = SKSpriteNode(imageNamed: "squareGood")
+        let obstacle = SKSpriteNode(imageNamed: "RedGood1")
         
         obstacle.position = CGPoint(x: size.width * randomBornPosition(), y: size.height * -0.5)
         obstacle.physicsBody = SKPhysicsBody(rectangleOf: obstacle.size)

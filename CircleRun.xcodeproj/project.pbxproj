@@ -17,6 +17,8 @@
 		D4027B531E1C22700098DC6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4027B511E1C22700098DC6E /* LaunchScreen.storyboard */; };
 		D4027B5E1E1C32340098DC6E /* CreatePlayerGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4027B5D1E1C32340098DC6E /* CreatePlayerGameScene.swift */; };
 		D4027B611E1FC1810098DC6E /* AccelerometerGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4027B601E1FC1810098DC6E /* AccelerometerGameScene.swift */; };
+		D488C20E1E2E794A0072C08C /* Stars.sks in Resources */ = {isa = PBXBuildFile; fileRef = D488C20D1E2E794A0072C08C /* Stars.sks */; };
+		D488C2101E2E7EE30072C08C /* Snow.sks in Resources */ = {isa = PBXBuildFile; fileRef = D488C20F1E2E7EE30072C08C /* Snow.sks */; };
 		D4AF83BE1E26B0DA00655923 /* CreateObjectGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF83BD1E26B0DA00655923 /* CreateObjectGameScene.swift */; };
 		D4AF83C01E26B15400655923 /* MoveObstacleGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF83BF1E26B15400655923 /* MoveObstacleGameScene.swift */; };
 		D4AF83C31E29164F00655923 /* ContantGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF83C21E29164F00655923 /* ContantGameScene.swift */; };
@@ -35,6 +37,8 @@
 		D4027B541E1C22700098DC6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4027B5D1E1C32340098DC6E /* CreatePlayerGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePlayerGameScene.swift; sourceTree = "<group>"; };
 		D4027B601E1FC1810098DC6E /* AccelerometerGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccelerometerGameScene.swift; sourceTree = "<group>"; };
+		D488C20D1E2E794A0072C08C /* Stars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Stars.sks; sourceTree = "<group>"; };
+		D488C20F1E2E7EE30072C08C /* Snow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Snow.sks; sourceTree = "<group>"; };
 		D4AF83BD1E26B0DA00655923 /* CreateObjectGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateObjectGameScene.swift; sourceTree = "<group>"; };
 		D4AF83BF1E26B15400655923 /* MoveObstacleGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveObstacleGameScene.swift; sourceTree = "<group>"; };
 		D4AF83C21E29164F00655923 /* ContantGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContantGameScene.swift; sourceTree = "<group>"; };
@@ -97,7 +101,9 @@
 			isa = PBXGroup;
 			children = (
 				D4027B441E1C22700098DC6E /* GameScene.sks */,
+				D488C20D1E2E794A0072C08C /* Stars.sks */,
 				D4027B461E1C22700098DC6E /* Actions.sks */,
+				D488C20F1E2E7EE30072C08C /* Snow.sks */,
 			);
 			name = SKS;
 			sourceTree = "<group>";
@@ -193,6 +199,8 @@
 				D4027B501E1C22700098DC6E /* Assets.xcassets in Resources */,
 				D4027B531E1C22700098DC6E /* LaunchScreen.storyboard in Resources */,
 				D4027B471E1C22700098DC6E /* Actions.sks in Resources */,
+				D488C2101E2E7EE30072C08C /* Snow.sks in Resources */,
+				D488C20E1E2E794A0072C08C /* Stars.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

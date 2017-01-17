@@ -27,6 +27,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     //CreateObject
     var signBorn = true
+    var dead = false
 
     //MoveObstacle
     var speedObj = 3.0

@@ -54,8 +54,10 @@ extension GameScene{
 
         obstacle.run(SKAction.rotate(byAngle: randomAngle(), duration: speedObj))
         
-        addChild(obstacle)
-        obstacle.run(moveObstacleWithBorn())
+        if !dead{
+            addChild(obstacle)
+            obstacle.run(moveObstacleWithBorn())
+        }
     }
     
     //BAD

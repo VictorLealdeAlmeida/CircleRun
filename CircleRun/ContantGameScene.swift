@@ -54,22 +54,34 @@ extension GameScene{
     func playerDidCollideWithObjBad(_ playerP:SKSpriteNode, objO:SKSpriteNode) {
         
         if playerStatus == 1{
+            
+            effectCollision(node: playerP, fileNamed: "CollisionPlayer")
             playerP.removeFromParent()
+            dead = true
+            
         }else if playerStatus == 2{
-            effectCollision(node: objO)
+            
+            effectCollision(node: playerP, fileNamed: "CollisionPlayer")
+            effectCollision(node: objO, fileNamed: "Collision")
+            
             objO.removeFromParent()
             player.run(SKAction.scale(to: 0.00015*size.width, duration: 0.25))
             playerStatus = 1
+            
         }else if playerStatus == 3{
-            effectCollision(node: objO)
+            
+            effectCollision(node: objO, fileNamed: "Collision")
+            effectCollision(node: playerP, fileNamed: "CollisionPlayer")
+            
             objO.removeFromParent()
             player.run(SKAction.scale(to: 0.0002*size.width, duration: 0.25))
             playerStatus = 2
+            
         }
     }
     
-    func effectCollision(node : SKSpriteNode){
-        let starField = SKEmitterNode(fileNamed: "Collision")
+    func effectCollision(node : SKSpriteNode, fileNamed : String){
+        let starField = SKEmitterNode(fileNamed: fileNamed)
         starField?.position = node.position
         starField?.zPosition = -3
         self.addChild(starField!)
@@ -78,6 +90,15 @@ extension GameScene{
         starField?.run(sequece)
     }
     
+    func effectCollisionPlayer(){
+        let starField = SKEmitterNode(fileNamed: "CollisionPlayer")
+        starField?.position = CGPoint(x: 0, y: 0)
+        starField?.zPosition = -3
+        player.addChild(starField!)
+        
+        let sequece = SKAction.sequence([SKAction.fadeAlpha(to: 0, duration: 1),SKAction.removeFromParent()])
+        starField?.run(sequece)
+    }
 
    
     

@@ -22,4 +22,6 @@ extension GameScene{
         addChild(player)
     }
     
+
+    
 }

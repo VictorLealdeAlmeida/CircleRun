@@ -40,10 +40,30 @@ extension GameScene{
     
     func playerDidCollideWithObjGood(_ playerP:SKSpriteNode, objO:SKSpriteNode) {
         objO.removeFromParent()
+        if playerStatus == 1{
+            player.run(SKAction.scale(to: 0.0002*size.width, duration: 0.25))
+            playerStatus = 2
+        }else if playerStatus == 2{
+            player.run(SKAction.scale(to: 0.00025*size.width, duration: 0.25))
+            playerStatus = 3
+        }else if playerStatus == 3{
+            //OK
+        }
     }
     
     func playerDidCollideWithObjBad(_ playerP:SKSpriteNode, objO:SKSpriteNode) {
-        playerP.removeFromParent()
+        
+        if playerStatus == 1{
+            playerP.removeFromParent()
+        }else if playerStatus == 2{
+            objO.removeFromParent()
+            player.run(SKAction.scale(to: 0.00015*size.width, duration: 0.25))
+            playerStatus = 1
+        }else if playerStatus == 3{
+            objO.removeFromParent()
+            player.run(SKAction.scale(to: 0.0002*size.width, duration: 0.25))
+            playerStatus = 2
+        }
     }
     
 

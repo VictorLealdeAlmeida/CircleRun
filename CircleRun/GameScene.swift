@@ -22,6 +22,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     //CreatePlayer
     var player = SKSpriteNode(imageNamed: "circle")
+    var playerStatus = 2
     
     //CreateObject
     var signBorn = true

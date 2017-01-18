@@ -17,7 +17,7 @@ extension GameScene{
         player.setScale(0.00016*size.width)
         player.physicsBody?.categoryBitMask = PhysicsCategory.Player
         player.physicsBody?.collisionBitMask = PhysicsCategory.None
-        player.physicsBody?.contactTestBitMask = PhysicsCategory.ObjGood | PhysicsCategory.ObjBad
+        player.physicsBody?.contactTestBitMask = PhysicsCategory.ObjGood | PhysicsCategory.ObjBad | PhysicsCategory.ObjNewColor
         
         addChild(player)
     }

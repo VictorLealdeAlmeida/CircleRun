@@ -34,6 +34,11 @@ extension GameScene{
             
             //---PegarObjGood---//
             playerDidCollideWithObjBad(firstBody.node as! SKSpriteNode, objO: secondBody.node as! SKSpriteNode)
+            
+        }else if(contact.bodyB.categoryBitMask == PhysicsCategory.Player && contact.bodyA.categoryBitMask == PhysicsCategory.ObjNewColor){
+            
+            //---PegarObjNewCor---//
+            playerDidCollideWithObjNewColor(firstBody.node as! SKSpriteNode, objO: secondBody.node as! SKSpriteNode)
         }
       
     }
@@ -52,6 +57,9 @@ extension GameScene{
     }
     
     func playerDidCollideWithObjBad(_ playerP:SKSpriteNode, objO:SKSpriteNode) {
+        
+        print("--------")
+        print(objO.color)
         
         if playerStatus == 1{
             
@@ -72,7 +80,7 @@ extension GameScene{
             
         }else if playerStatus == 3{
             
-             effectCollision(node: playerP, fileNamed: "CollisionPlayer")
+            effectCollision(node: playerP, fileNamed: "CollisionPlayer")
             effectCollision(node: objO, fileNamed: "Collision")
             
             objO.removeFromParent()
@@ -89,27 +97,9 @@ extension GameScene{
         var color : UIColor
         
         if fileNamed == "Collision"{
-        switch currentObjBad {
-            case ObjBad.Red:
-                 color = UIColor(red:0.49, green:0.03, blue:0.03, alpha:1.00)
-            case ObjBad.Blue:
-                color = UIColor(red:0.01, green:0.08, blue:0.49, alpha:1.00)
-            case ObjBad.Green:
-                color = UIColor(red:0.06, green:0.49, blue:0.10, alpha:1.00)
-            case ObjBad.Yellow:
-                color = UIColor(red:0.49, green:0.31, blue:0.06, alpha:1.00)
-            case ObjBad.Pink:
-                color = UIColor(red:0.46, green:0.05, blue:0.49, alpha:1.00)
-            default:
-                color = UIColor(red:0.49, green:0.03, blue:0.03, alpha:1.00)
-            }
-            
-            if playerStatus == 3{
-                //starField?.particleSpeedRange = 5000
-            }
-            
+            color = node.color
         }else{
-             color = UIColor.yellow
+            color = UIColor.yellow
         }
         
       
@@ -117,11 +107,54 @@ extension GameScene{
         
         self.addChild(starField!)
         
-        let sequece = SKAction.sequence([SKAction.fadeAlpha(to: 0, duration: 1),SKAction.removeFromParent()])
+        let group = SKAction.group([SKAction.fadeAlpha(to: 0, duration: 1), SKAction.moveTo(y:size.height*0.5, duration: TimeInterval(speedObj*0.5))])
+        let sequece = SKAction.sequence([group,SKAction.removeFromParent()])
         starField?.run(sequece)
     }
     
-
+    func effectCollisionColor() -> UIColor{
+        
+        switch currentObjBad {
+        case ObjBad.Red:
+            return UIColor(red:0.49, green:0.03, blue:0.03, alpha:1.00)
+        case ObjBad.Blue:
+            return UIColor(red:0.01, green:0.08, blue:0.49, alpha:1.00)
+        case ObjBad.Green:
+            return UIColor(red:0.06, green:0.49, blue:0.10, alpha:1.00)
+        case ObjBad.Yellow:
+            return UIColor(red:0.49, green:0.31, blue:0.06, alpha:1.00)
+        case ObjBad.Pink:
+            return UIColor(red:0.46, green:0.05, blue:0.49, alpha:1.00)
+        default:
+            return UIColor(red:0.49, green:0.03, blue:0.03, alpha:1.00)
+        }
+        
+        
+    }
+    
+    func playerDidCollideWithObjNewColor(_ playerP:SKSpriteNode, objO:SKSpriteNode) {
+        
+        effectCollision(node: objO, fileNamed: "Collision")
+        objO.removeFromParent()
+        
+        if currentObjNewColor == ObjGood.Red{
+            currentObjGood = ObjGood.Red
+            currentObjBad = ObjBad.Red
+        }else if currentObjNewColor == ObjGood.Blue{
+            currentObjGood = ObjGood.Blue
+            currentObjBad = ObjBad.Blue
+        }else if currentObjNewColor == ObjGood.Green{
+            currentObjGood = ObjGood.Green
+            currentObjBad = ObjBad.Green
+        }else if currentObjNewColor == ObjGood.Yellow{
+            currentObjGood = ObjGood.Yellow
+            currentObjBad = ObjBad.Yellow
+        }else if currentObjNewColor == ObjGood.Pink{
+            currentObjGood = ObjGood.Pink
+            currentObjBad = ObjBad.Pink
+        }
+        
+    }
 
    
     

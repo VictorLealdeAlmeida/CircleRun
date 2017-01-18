@@ -30,7 +30,7 @@ extension GameScene{
     }
     
     func randomBornGoodOrBad() -> Int{
-        return Int(arc4random_uniform(4) + 1)
+        return Int(arc4random_uniform(4))
     }
     
     func randomAngle() -> CGFloat{
@@ -43,7 +43,7 @@ extension GameScene{
     }
     
     func randomColor(){
-        let value = Int(arc4random_uniform(4))
+        let value = Int(arc4random_uniform(5))
         if value == 0{
             currentObjGood = ObjGood.Red
             currentObjBad = ObjBad.Red
@@ -56,6 +56,24 @@ extension GameScene{
         }else if value == 3{
             currentObjGood = ObjGood.Yellow
             currentObjBad = ObjBad.Yellow
+        }else if value == 4{
+            currentObjGood = ObjGood.Pink
+            currentObjBad = ObjBad.Pink
+        }
+    }
+    
+    func randomNewColor(){
+        let value = Int(arc4random_uniform(5))
+        if value == 0{
+            currentObjNewColor = ObjGood.Red
+        }else if value == 1{
+            currentObjNewColor = ObjGood.Blue
+        }else if value == 2{
+            currentObjNewColor = ObjGood.Green
+        }else if value == 3{
+            currentObjNewColor = ObjGood.Yellow
+        }else if value == 4{
+            currentObjNewColor = ObjGood.Pink
         }
     }
 

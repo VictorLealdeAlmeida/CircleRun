@@ -12,13 +12,18 @@ import GameplayKit
 extension GameScene{
     
     func createObject(){
+        
         let value = randomBornGoodOrBad()
         var obstacle : SKSpriteNode
         
-        if value == 1{
-            obstacle = squareGood()
+        if countObj%10 == 0{
+            obstacle = squareNewColor()
         }else{
-            obstacle = squareBad()
+            if value == 0{
+                obstacle = squareGood()
+            }else{
+                obstacle = squareBad()
+            }
         }
 
         obstacle.run(SKAction.rotate(byAngle: randomAngle(), duration: speedObj))
@@ -27,6 +32,8 @@ extension GameScene{
             addChild(obstacle)
             obstacle.run(moveObstacleWithBorn())
         }
+        
+        countObj += 1
     }
     
     //BAD
@@ -53,6 +60,8 @@ extension GameScene{
         obstacle.physicsBody = SKPhysicsBody(rectangleOf: obstacle.size)
         obstacle.zPosition = 10
         obstacle.setScale(0.0002*size.width)
+        obstacle.color = effectCollisionColor()
+        
         obstacle.physicsBody?.categoryBitMask = PhysicsCategory.ObjBad
         obstacle.physicsBody?.collisionBitMask = PhysicsCategory.None
         obstacle.physicsBody?.contactTestBitMask = PhysicsCategory.Player
@@ -85,7 +94,30 @@ extension GameScene{
         obstacle.physicsBody = SKPhysicsBody(rectangleOf: obstacle.size)
         obstacle.zPosition = 10
         obstacle.setScale(0.0002*size.width)
+        obstacle.color = effectCollisionColor()
+        
         obstacle.physicsBody?.categoryBitMask = PhysicsCategory.ObjGood
+        obstacle.physicsBody?.collisionBitMask = PhysicsCategory.None
+        obstacle.physicsBody?.contactTestBitMask = PhysicsCategory.Player
+        
+        return obstacle
+    }
+    
+    func squareNewColor() -> SKSpriteNode{
+        
+        let obstacle = SKSpriteNode(imageNamed: "RedGood1")
+        
+        randomNewColor()
+        obstacle.texture = SKTexture(image: currentObjNewColor)
+        
+        obstacle.color = effectCollisionColor()
+        obstacle.position = CGPoint(x: size.width * randomBornPosition(), y: size.height * -0.5)
+        obstacle.physicsBody = SKPhysicsBody(rectangleOf: obstacle.size)
+        obstacle.zPosition = 10
+        obstacle.setScale(0.0002*size.width)
+        obstacle.color = effectCollisionColor()
+        
+        obstacle.physicsBody?.categoryBitMask = PhysicsCategory.ObjNewColor
         obstacle.physicsBody?.collisionBitMask = PhysicsCategory.None
         obstacle.physicsBody?.contactTestBitMask = PhysicsCategory.Player
         

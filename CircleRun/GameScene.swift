@@ -16,7 +16,7 @@ struct PhysicsCategory {
     static let Player         : UInt32 = 0b1
     static let ObjGood        : UInt32 = 0b10
     static let ObjBad         : UInt32 = 0b11
-    static let Player32       : UInt32 = 0b110
+    static let ObjNewColor    : UInt32 = 0b110
 }
 
 struct ObjGood {
@@ -47,9 +47,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var dead = false
     var currentObjGood = ObjGood.Red
     var currentObjBad = ObjBad.Red
+    var currentObjNewColor = ObjGood.Red
+    var countObj = 1
 
     //MoveObstacle
     var speedObj = 3.0
+    
+    //Contact
     
     //Motion
     var limitRight : CGFloat = 0.0

@@ -55,8 +55,10 @@ extension GameScene{
         
         if playerStatus == 1{
             
+            effectCollision(node: objO, fileNamed: "Collision")
             effectCollision(node: playerP, fileNamed: "CollisionPlayer")
             playerP.removeFromParent()
+            objO.removeFromParent()
             dead = true
             
         }else if playerStatus == 2{

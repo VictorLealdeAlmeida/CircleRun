@@ -24,6 +24,7 @@
 		D4AF83C31E29164F00655923 /* ContantGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AF83C21E29164F00655923 /* ContantGameScene.swift */; };
 		D4F90E4A1E2E897000295F23 /* Collision.sks in Resources */ = {isa = PBXBuildFile; fileRef = D4F90E491E2E897000295F23 /* Collision.sks */; };
 		D4F90E4C1E2EA77400295F23 /* CollisionPlayer.sks in Resources */ = {isa = PBXBuildFile; fileRef = D4F90E4B1E2EA77400295F23 /* CollisionPlayer.sks */; };
+		D4F90E4E1E2EE20300295F23 /* RandomGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F90E4D1E2EE20300295F23 /* RandomGameScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		D4AF83C21E29164F00655923 /* ContantGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContantGameScene.swift; sourceTree = "<group>"; };
 		D4F90E491E2E897000295F23 /* Collision.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Collision.sks; sourceTree = "<group>"; };
 		D4F90E4B1E2EA77400295F23 /* CollisionPlayer.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CollisionPlayer.sks; sourceTree = "<group>"; };
+		D4F90E4D1E2EE20300295F23 /* RandomGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomGameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			children = (
 				D4027B5D1E1C32340098DC6E /* CreatePlayerGameScene.swift */,
 				D4AF83BD1E26B0DA00655923 /* CreateObjectGameScene.swift */,
+				D4F90E4D1E2EE20300295F23 /* RandomGameScene.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				D4027B4B1E1C22700098DC6E /* GameViewController.swift in Sources */,
 				D4027B611E1FC1810098DC6E /* AccelerometerGameScene.swift in Sources */,
 				D4AF83BE1E26B0DA00655923 /* CreateObjectGameScene.swift in Sources */,
+				D4F90E4E1E2EE20300295F23 /* RandomGameScene.swift in Sources */,
 				D4027B431E1C22700098DC6E /* AppDelegate.swift in Sources */,
 				D4027B5E1E1C32340098DC6E /* CreatePlayerGameScene.swift in Sources */,
 				D4AF83C01E26B15400655923 /* MoveObstacleGameScene.swift in Sources */,

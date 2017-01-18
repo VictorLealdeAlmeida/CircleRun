@@ -11,37 +11,6 @@ import GameplayKit
 
 extension GameScene{
     
-    func randomBornPosition() -> CGFloat{
-        if signBorn{
-            signBorn = false
-            return CGFloat(arc4random_uniform(5))/10
-        }else{
-            signBorn = true
-            return -CGFloat(arc4random_uniform(5))/10
-        }
-    }
-    
-    func randomEndPosition() -> CGFloat{
-        if signBorn{
-            return -CGFloat(arc4random_uniform(5))/10
-        }else{
-            return CGFloat(arc4random_uniform(5))/10
-        }
-    }
-    
-    func randomBornGoodOrBad() -> Int{
-        return Int(arc4random_uniform(4) + 1)
-    }
-    
-    func randomAngle() -> CGFloat{
-        let value = Int(arc4random_uniform(2))
-        if value == 0{
-            return CGFloat(arc4random_uniform(40))/10
-        }else{
-            return -CGFloat(arc4random_uniform(40))/10
-        }
-    }
-    
     func createObject(){
         let value = randomBornGoodOrBad()
         var obstacle : SKSpriteNode
@@ -65,6 +34,19 @@ extension GameScene{
     func squareBad() -> SKSpriteNode{
         let obstacle = SKSpriteNode(imageNamed: "RedBad1")
         
+        switch currentObjBad {
+        case ObjBad.Red:
+            obstacle.texture = SKTexture(image: ObjBad.Red)
+        case ObjBad.Blue:
+            obstacle.texture = SKTexture(image: ObjBad.Blue)
+        case ObjBad.Green:
+            obstacle.texture = SKTexture(image: ObjBad.Green)
+        case ObjBad.Yellow:
+            obstacle.texture = SKTexture(image: ObjBad.Yellow)
+        default:
+            obstacle.texture = SKTexture(image: ObjBad.Red)
+        }
+        
         obstacle.position = CGPoint(x: size.width * randomBornPosition(), y: size.height * -0.5)
         obstacle.physicsBody = SKPhysicsBody(rectangleOf: obstacle.size)
         obstacle.zPosition = 10
@@ -79,7 +61,21 @@ extension GameScene{
     //GOOD
     
     func squareGood() -> SKSpriteNode{
+        
         let obstacle = SKSpriteNode(imageNamed: "RedGood1")
+        
+        switch currentObjGood {
+        case ObjGood.Red:
+            obstacle.texture = SKTexture(image: ObjGood.Red)
+        case ObjGood.Blue:
+            obstacle.texture = SKTexture(image: ObjGood.Blue)
+        case ObjGood.Green:
+            obstacle.texture = SKTexture(image: ObjGood.Green)
+        case ObjGood.Yellow:
+            obstacle.texture = SKTexture(image: ObjGood.Yellow)
+        default:
+            obstacle.texture = SKTexture(image: ObjGood.Red)
+        }
         
         obstacle.position = CGPoint(x: size.width * randomBornPosition(), y: size.height * -0.5)
         obstacle.physicsBody = SKPhysicsBody(rectangleOf: obstacle.size)

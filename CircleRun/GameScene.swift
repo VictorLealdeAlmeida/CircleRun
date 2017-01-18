@@ -19,6 +19,20 @@ struct PhysicsCategory {
     static let Player32       : UInt32 = 0b110
 }
 
+struct ObjGood {
+    static let Red           : UIImage = #imageLiteral(resourceName: "RedGood1")
+    static let Blue          : UIImage = #imageLiteral(resourceName: "BlueGood")
+    static let Green         : UIImage = #imageLiteral(resourceName: "GreenGood")
+    static let Yellow        : UIImage = #imageLiteral(resourceName: "YellowGood")
+}
+
+struct ObjBad {
+    static let Red           : UIImage = #imageLiteral(resourceName: "RedBad1")
+    static let Blue          : UIImage = #imageLiteral(resourceName: "BlueBad")
+    static let Green         : UIImage = #imageLiteral(resourceName: "GreenBad")
+    static let Yellow        : UIImage = #imageLiteral(resourceName: "YellowBad")
+}
+
 class GameScene: SKScene, SKPhysicsContactDelegate{
     
     //CreatePlayer
@@ -28,6 +42,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     //CreateObject
     var signBorn = true
     var dead = false
+    var currentObjGood = ObjGood.Red
+    var currentObjBad = ObjBad.Red
 
     //MoveObstacle
     var speedObj = 3.0
@@ -55,8 +71,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         createPlayer()
         motionPlayer()
-        
         createObject()
+        randomColor()
         
         let starField = SKEmitterNode(fileNamed: "Snow")
         starField?.position = CGPoint(x: 0, y: -self.size.height*0.6)

@@ -24,6 +24,7 @@ struct ObjGood {
     static let Blue          : UIImage = #imageLiteral(resourceName: "BlueGood")
     static let Green         : UIImage = #imageLiteral(resourceName: "GreenGood")
     static let Yellow        : UIImage = #imageLiteral(resourceName: "YellowGood")
+    static let Pink          : UIImage = #imageLiteral(resourceName: "PinkGood")
 }
 
 struct ObjBad {
@@ -31,6 +32,8 @@ struct ObjBad {
     static let Blue          : UIImage = #imageLiteral(resourceName: "BlueBad")
     static let Green         : UIImage = #imageLiteral(resourceName: "GreenBad")
     static let Yellow        : UIImage = #imageLiteral(resourceName: "YellowBad")
+    static let Pink          : UIImage = #imageLiteral(resourceName: "PinkBad")
+
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
@@ -69,10 +72,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         limitRight = 0.8*(size.width/2)
         limitLeft = -0.8*(size.width/2)
         
+        randomColor()
         createPlayer()
         motionPlayer()
         createObject()
-        randomColor()
         
         let starField = SKEmitterNode(fileNamed: "Snow")
         starField?.position = CGPoint(x: 0, y: -self.size.height*0.6)

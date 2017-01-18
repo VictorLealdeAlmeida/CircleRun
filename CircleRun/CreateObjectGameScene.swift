@@ -43,6 +43,8 @@ extension GameScene{
             obstacle.texture = SKTexture(image: ObjBad.Green)
         case ObjBad.Yellow:
             obstacle.texture = SKTexture(image: ObjBad.Yellow)
+        case ObjBad.Pink:
+            obstacle.texture = SKTexture(image: ObjBad.Pink)
         default:
             obstacle.texture = SKTexture(image: ObjBad.Red)
         }
@@ -73,6 +75,8 @@ extension GameScene{
             obstacle.texture = SKTexture(image: ObjGood.Green)
         case ObjGood.Yellow:
             obstacle.texture = SKTexture(image: ObjGood.Yellow)
+        case ObjGood.Pink:
+            obstacle.texture = SKTexture(image: ObjGood.Pink)
         default:
             obstacle.texture = SKTexture(image: ObjGood.Red)
         }

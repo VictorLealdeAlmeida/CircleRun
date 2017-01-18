@@ -73,7 +73,7 @@ extension GameScene{
         }else if playerStatus == 3{
             
             effectCollision(node: objO, fileNamed: "Collision")
-            effectCollision(node: playerP, fileNamed: "CollisionPlayer")
+            effectCollisionPlayer()
             
             objO.removeFromParent()
             player.run(SKAction.scale(to: 0.0002*size.width, duration: 0.25))
@@ -86,6 +86,30 @@ extension GameScene{
         let starField = SKEmitterNode(fileNamed: fileNamed)
         starField?.position = node.position
         starField?.zPosition = -3
+        var color : UIColor
+        
+        if fileNamed == "Collision"{
+        switch currentObjBad {
+            case ObjBad.Red:
+                 color = UIColor(red:0.49, green:0.03, blue:0.03, alpha:1.00)
+            case ObjBad.Blue:
+                color = UIColor(red:0.01, green:0.08, blue:0.49, alpha:1.00)
+            case ObjBad.Green:
+                color = UIColor(red:0.06, green:0.49, blue:0.10, alpha:1.00)
+            case ObjBad.Yellow:
+                color = UIColor(red:0.49, green:0.31, blue:0.06, alpha:1.00)
+            case ObjBad.Pink:
+                color = UIColor(red:0.46, green:0.05, blue:0.49, alpha:1.00)
+            default:
+                color = UIColor(red:0.49, green:0.03, blue:0.03, alpha:1.00)
+            }
+        }else{
+             color = UIColor.yellow
+        }
+        
+      
+        starField?.particleColorSequence = SKKeyframeSequence(keyframeValues: [color], times: [0])
+        
         self.addChild(starField!)
         
         let sequece = SKAction.sequence([SKAction.fadeAlpha(to: 0, duration: 1),SKAction.removeFromParent()])

@@ -14,7 +14,7 @@ extension GameScene{
         player.position = CGPoint(x: size.width * 0.0, y: size.height * 0.25)
         player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2)
         player.zPosition = 10
-        player.setScale(0.0002*size.width)
+        player.setScale(0.00016*size.width)
         player.physicsBody?.categoryBitMask = PhysicsCategory.Player
         player.physicsBody?.collisionBitMask = PhysicsCategory.None
         player.physicsBody?.contactTestBitMask = PhysicsCategory.ObjGood | PhysicsCategory.ObjBad

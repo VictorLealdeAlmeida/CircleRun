@@ -41,10 +41,10 @@ extension GameScene{
     func playerDidCollideWithObjGood(_ playerP:SKSpriteNode, objO:SKSpriteNode) {
         objO.removeFromParent()
         if playerStatus == 1{
-            player.run(SKAction.scale(to: 0.0002*size.width, duration: 0.25))
+            player.run(SKAction.scale(to: 0.00016*size.width, duration: 0.25))
             playerStatus = 2
         }else if playerStatus == 2{
-            player.run(SKAction.scale(to: 0.00025*size.width, duration: 0.25))
+            player.run(SKAction.scale(to: 0.0002*size.width, duration: 0.25))
             playerStatus = 3
         }else if playerStatus == 3{
             //OK
@@ -67,16 +67,16 @@ extension GameScene{
             effectCollision(node: objO, fileNamed: "Collision")
             
             objO.removeFromParent()
-            player.run(SKAction.scale(to: 0.00015*size.width, duration: 0.25))
+            player.run(SKAction.scale(to: 0.00012*size.width, duration: 0.25))
             playerStatus = 1
             
         }else if playerStatus == 3{
             
+             effectCollision(node: playerP, fileNamed: "CollisionPlayer")
             effectCollision(node: objO, fileNamed: "Collision")
-            effectCollisionPlayer()
             
             objO.removeFromParent()
-            player.run(SKAction.scale(to: 0.0002*size.width, duration: 0.25))
+            player.run(SKAction.scale(to: 0.00016*size.width, duration: 0.25))
             playerStatus = 2
             
         }
@@ -103,6 +103,11 @@ extension GameScene{
             default:
                 color = UIColor(red:0.49, green:0.03, blue:0.03, alpha:1.00)
             }
+            
+            if playerStatus == 3{
+                //starField?.particleSpeedRange = 5000
+            }
+            
         }else{
              color = UIColor.yellow
         }
@@ -116,15 +121,7 @@ extension GameScene{
         starField?.run(sequece)
     }
     
-    func effectCollisionPlayer(){
-        let starField = SKEmitterNode(fileNamed: "CollisionPlayer")
-        starField?.position = CGPoint(x: 0, y: 0)
-        starField?.zPosition = -3
-        player.addChild(starField!)
-        
-        let sequece = SKAction.sequence([SKAction.fadeAlpha(to: 0, duration: 1),SKAction.removeFromParent()])
-        starField?.run(sequece)
-    }
+
 
    
     

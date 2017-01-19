@@ -32,6 +32,9 @@ class GameViewController: UIViewController {
             view.showsFPS = true
             view.showsNodeCount = true
         }
+        
+        UIApplication.shared.isIdleTimerDisabled = true
+
     }
 
     override var shouldAutorotate: Bool {

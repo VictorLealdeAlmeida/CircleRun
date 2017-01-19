@@ -161,6 +161,24 @@ extension GameScene{
         if Int(scoreLabel.text!)! > defaults.integer(forKey: "record"){
             defaults.set(Int(scoreLabel.text!)!, forKey: "record")
         }
+        
+        recordLabel.removeFromParent()
+        scoreLabel.removeFromParent()
+        
+        scoreLabel.text = String(Int(scoreLabel.text!)!)
+        scoreLabel.position = CGPoint(x: 0, y: 0)
+        scoreLabel.fontSize = 150
+        self.addChild(scoreLabel)
+        
+        let points = SKLabelNode(fontNamed: "Helvetica")
+        
+        points.text = "points"
+        points.position = CGPoint(x: 0, y: -0.1*size.width)
+        points.fontSize = 50
+        points.zPosition = 100
+
+        self.addChild(points)
+
     }
 
    

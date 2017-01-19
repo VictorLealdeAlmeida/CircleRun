@@ -41,6 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     //GameScene
     var scoreLabel = SKLabelNode(fontNamed: "Helvetica")
     var recordLabel = SKLabelNode(fontNamed: "Helvetica")
+    var tapToPlay = SKLabelNode(fontNamed: "Helvetica")
 
     
     //CreatePlayer
@@ -81,19 +82,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         limitRight = 0.8*(size.width/2)
         limitLeft = -0.8*(size.width/2)
         
-        randomColor()
-        createPlayer()
-        motionPlayer()
-        createObject()
+        snow()
+        createStringTap()
         
-        createStrings()
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(startGame))
+        view.addGestureRecognizer(tap)
         
-        startScore()
         
-        let starField = SKEmitterNode(fileNamed: "Snow")
-        starField?.position = CGPoint(x: 0, y: -self.size.height*0.6)
-        starField?.zPosition = -5
-        self.addChild(starField!)
+       
         
         if(defaults.object(forKey: "record") == nil){
             defaults.set(0, forKey: "record")
@@ -101,43 +97,55 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
     }
     
-    
-    override func update(_ currentTime: TimeInterval) {
+    func startGame(){
+        tapToPlay.removeFromParent()
         
+        createScoreStrings()
+        startScore()
+        randomColor()
+        createPlayer()
+        motionPlayer()
+        createObject()
     }
     
-    func createStrings(){
+    func createStringTap(){
+        tapToPlay.text = "tap to play"
+        tapToPlay.fontSize = 70
+        tapToPlay.zPosition = 100
+        tapToPlay.position = CGPoint(x: 0, y: 0)
+        
+        tapToPlay.run(SKAction.repeatForever(SKAction.sequence([SKAction.fadeAlpha(to: 0, duration: 1),SKAction.sequence([SKAction.fadeAlpha(to: 1, duration: 1)])])))
+        
+        self.addChild(tapToPlay)
+    }
+    
+    func createScoreStrings(){
         scoreLabel.text = "0000"
         scoreLabel.fontSize = 50
         scoreLabel.zPosition = 100
         scoreLabel.position = CGPoint(x: size.width*0.34, y: size.height*0.44)
         
-        /*let currencyFormatter = NumberFormatter()
-        currencyFormatter.usesGroupingSeparator = true
-        // localize to your grouping and decimal separator
-        let priceString = currencyFormatter.string(from: 9999.99)
-        print(priceString!)*/
-
-        
         self.addChild(scoreLabel)
         
-        recordLabel.text = String(defaults.integer(forKey: "record"))
+        recordLabel.text = formatString(value: defaults.integer(forKey: "record"))
         recordLabel.fontSize = 30
         recordLabel.fontColor = UIColor.green
         recordLabel.zPosition = 100
         recordLabel.position = CGPoint(x: size.width*0.34, y: size.height*0.41)
         
         self.addChild(recordLabel)
-        
-        
-        
-        /*let index1 = scoreLabel.text?.index((scoreLabel.text?.startIndex)!, offsetBy: 2)
-        
-        print("______")
-        print(index1!)*/
-
-        
-        
+    }
+    
+    func formatString(value : Int) -> String{
+        if value < 10{
+            return "000" + String(value)
+        }else if value < 100{
+            return "00" + String(value)
+        }else if value < 1000{
+            return "0" + String(value)
+        }else{
+            return String(value)
+        }
     }
     
     func startScore(){
@@ -146,7 +154,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func upScore(){
-        scoreLabel.text = String(Int(scoreLabel.text!)! + 1)
+        scoreLabel.text = formatString(value: Int(scoreLabel.text!)! + 1)
     }
     
 }

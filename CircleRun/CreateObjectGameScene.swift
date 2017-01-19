@@ -122,4 +122,11 @@ extension GameScene{
         
         return obstacle
     }
+    
+    func snow(){
+        let starField = SKEmitterNode(fileNamed: "Snow")
+        starField?.position = CGPoint(x: 0, y: -self.size.height*0.6)
+        starField?.zPosition = -5
+        self.addChild(starField!)
+    }
 }

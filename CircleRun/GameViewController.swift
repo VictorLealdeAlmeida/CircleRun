@@ -10,6 +10,8 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
+let defaults = UserDefaults.standard
+
 class GameViewController: UIViewController {
 
     override func viewDidLoad() {

@@ -39,6 +39,8 @@ extension GameScene{
             
             //---PegarObjNewCor---//
             playerDidCollideWithObjNewColor(firstBody.node as! SKSpriteNode, objO: secondBody.node as! SKSpriteNode)
+            playerDidCollideWithObjGood(firstBody.node as! SKSpriteNode, objO: secondBody.node as! SKSpriteNode)
+
         }
       
     }
@@ -58,16 +60,14 @@ extension GameScene{
     
     func playerDidCollideWithObjBad(_ playerP:SKSpriteNode, objO:SKSpriteNode) {
         
-        print("--------")
-        print(objO.color)
-        
         if playerStatus == 1{
             
             effectCollision(node: objO, fileNamed: "Collision")
             effectCollision(node: playerP, fileNamed: "CollisionPlayer")
             playerP.removeFromParent()
             objO.removeFromParent()
-            dead = true
+            
+            gameOver()
             
         }else if playerStatus == 2{
             
@@ -133,10 +133,7 @@ extension GameScene{
     }
     
     func playerDidCollideWithObjNewColor(_ playerP:SKSpriteNode, objO:SKSpriteNode) {
-        
-        effectCollision(node: objO, fileNamed: "Collision")
-        objO.removeFromParent()
-        
+                
         if currentObjNewColor == ObjGood.Red{
             currentObjGood = ObjGood.Red
             currentObjBad = ObjBad.Red
@@ -154,6 +151,16 @@ extension GameScene{
             currentObjBad = ObjBad.Pink
         }
         
+    }
+    
+    func gameOver(){
+        
+        dead = true
+        removeAction(forKey: "upScore")
+   
+        if Int(scoreLabel.text!)! > defaults.integer(forKey: "record"){
+            defaults.set(Int(scoreLabel.text!)!, forKey: "record")
+        }
     }
 
    

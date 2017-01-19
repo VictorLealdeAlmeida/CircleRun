@@ -30,7 +30,7 @@ extension GameScene{
     }
     
     func randomBornGoodOrBad() -> Int{
-        return Int(arc4random_uniform(4))
+        return Int(arc4random_uniform(5))
     }
     
     func randomAngle() -> CGFloat{

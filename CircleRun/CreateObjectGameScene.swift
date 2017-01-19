@@ -16,7 +16,7 @@ extension GameScene{
         let value = randomBornGoodOrBad()
         var obstacle : SKSpriteNode
         
-        if countObj%10 == 0{
+        if countObj%50 == 0{
             obstacle = squareNewColor()
         }else{
             if value == 0{
@@ -110,7 +110,6 @@ extension GameScene{
         randomNewColor()
         obstacle.texture = SKTexture(image: currentObjNewColor)
         
-        obstacle.color = effectCollisionColor()
         obstacle.position = CGPoint(x: size.width * randomBornPosition(), y: size.height * -0.5)
         obstacle.physicsBody = SKPhysicsBody(rectangleOf: obstacle.size)
         obstacle.zPosition = 10

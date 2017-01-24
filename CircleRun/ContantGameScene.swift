@@ -60,6 +60,13 @@ extension GameScene{
     
     func playerDidCollideWithObjBad(_ playerP:SKSpriteNode, objO:SKSpriteNode) {
         
+        //Audio
+        let bomb = SKAudioNode(fileNamed: "Barrel.wav")
+        bomb.autoplayLooped = false
+        addChild(bomb)
+        bomb.run(SKAction.changeVolume(to: 0.07, duration: 0))
+        bomb.run(SKAction.play())
+        
         if playerStatus == 1{
             
             effectCollision(node: objO, fileNamed: "Collision")
@@ -155,30 +162,57 @@ extension GameScene{
     
     func gameOver(){
         
+        run(SKAction.playSoundFileNamed("Array.wav", waitForCompletion: true))
+        
         dead = true
         removeAction(forKey: "upScore")
-   
-        if Int(scoreLabel.text!)! > defaults.integer(forKey: "record"){
-            defaults.set(Int(scoreLabel.text!)!, forKey: "record")
-        }
         
         recordLabel.removeFromParent()
         scoreLabel.removeFromParent()
         
+        scoreLabel.fontName = "Arial"
         scoreLabel.text = String(Int(scoreLabel.text!)!)
         scoreLabel.position = CGPoint(x: 0, y: 0)
-        scoreLabel.fontSize = 150
+        scoreLabel.fontSize = 160
+        scoreLabel.alpha = 0
         self.addChild(scoreLabel)
         
         let points = SKLabelNode(fontNamed: "Helvetica")
         
         points.text = "points"
-        points.position = CGPoint(x: 0, y: -0.1*size.width)
+        points.position = CGPoint(x: 0.0*size.width, y: -0.1*size.width)
         points.fontSize = 50
         points.zPosition = 100
+        points.alpha = 0
 
         self.addChild(points)
+        
+        scoreLabel.run(SKAction.fadeAlpha(to: 1, duration: 1))
+        points.run(SKAction.fadeAlpha(to: 1, duration: 1))
+        
+        if Int(scoreLabel.text!)! > defaults.integer(forKey: "record"){
+            defaults.set(Int(scoreLabel.text!)!, forKey: "record")
+            
+            let record = SKLabelNode(fontNamed: "Helvetica")
+            
+            record.text = "new record"
+            record.position = CGPoint(x: 0*size.width, y: -0.25*size.width)
+            record.fontSize = 50
+            record.zPosition = 100
+            
+            self.addChild(record)
 
+            record.run(SKAction.repeatForever(SKAction.sequence([SKAction.fadeAlpha(to: 0, duration: 0.7),SKAction.sequence([SKAction.fadeAlpha(to: 0.7, duration: 1)])])))
+        }
+        
+        tap = UITapGestureRecognizer(target: self, action: #selector(clear))
+        view?.addGestureRecognizer(tap!)
+    }
+    
+    func clear(){
+        if dead{
+            gameSceneDelegate?.newScene()
+        }
     }
 
    

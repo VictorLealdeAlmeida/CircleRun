@@ -36,13 +36,20 @@ struct ObjBad {
 
 }
 
+@objc protocol GameOverDelegate {
+    func newScene()
+}
+
 class GameScene: SKScene, SKPhysicsContactDelegate{
+    
+    //Protocolo
+    var gameSceneDelegate : GameOverDelegate?
     
     //GameScene
     var scoreLabel = SKLabelNode(fontNamed: "Helvetica")
     var recordLabel = SKLabelNode(fontNamed: "Helvetica")
     var tapToPlay = SKLabelNode(fontNamed: "Helvetica")
-
+    var tap : UITapGestureRecognizer? = nil
     
     //CreatePlayer
     var player = SKSpriteNode(imageNamed: "circle")
@@ -84,12 +91,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         snow()
         createStringTap()
+        iPhoneScreenSizesTap()
+
+        tap = UITapGestureRecognizer(target: self, action: #selector(startGame))
+        view.addGestureRecognizer(tap!)
         
-        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(startGame))
-        view.addGestureRecognizer(tap)
-        
-        
-       
+        //Audio
+        let background = SKAudioNode(fileNamed: "Contemplative.wav")
+        background.autoplayLooped = true
+        addChild(background)
+        background.run(SKAction.changeVolume(to: 0.07, duration: 0))
+
         
         if(defaults.object(forKey: "record") == nil){
             defaults.set(0, forKey: "record")
@@ -99,6 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     func startGame(){
         tapToPlay.removeFromParent()
+        view?.removeGestureRecognizer(tap!)
         
         createScoreStrings()
         startScore()
@@ -110,8 +123,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     func createStringTap(){
         tapToPlay.text = "tap to play"
-        tapToPlay.fontSize = 70
-        tapToPlay.zPosition = 100
         tapToPlay.position = CGPoint(x: 0, y: 0)
         
         tapToPlay.run(SKAction.repeatForever(SKAction.sequence([SKAction.fadeAlpha(to: 0, duration: 1),SKAction.sequence([SKAction.fadeAlpha(to: 1, duration: 1)])])))
@@ -121,19 +132,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     func createScoreStrings(){
         scoreLabel.text = "0000"
-        scoreLabel.fontSize = 50
         scoreLabel.zPosition = 100
         scoreLabel.position = CGPoint(x: size.width*0.34, y: size.height*0.44)
         
-        self.addChild(scoreLabel)
-        
         recordLabel.text = formatString(value: defaults.integer(forKey: "record"))
-        recordLabel.fontSize = 30
-        recordLabel.fontColor = UIColor.green
+        recordLabel.fontColor = UIColor(red:0.87, green:0.65, blue:0.39, alpha:1.00)
         recordLabel.zPosition = 100
         recordLabel.position = CGPoint(x: size.width*0.34, y: size.height*0.41)
         
+        iPhoneScreenSizes()
+        self.addChild(scoreLabel)
         self.addChild(recordLabel)
+        
     }
     
     func formatString(value : Int) -> String{
@@ -155,6 +165,70 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     func upScore(){
         scoreLabel.text = formatString(value: Int(scoreLabel.text!)! + 1)
+        
+        if Int(scoreLabel.text!)! == Int(recordLabel.text!)!{
+            run(SKAction.playSoundFileNamed("coin10.wav", waitForCompletion: false))
+
+        }
     }
     
+    func iPhoneScreenSizesTap(){
+        let bounds = UIScreen.main.bounds
+        let height = bounds.size.height
+        
+        switch height {
+        case 568.0:
+            tapToPlay.fontSize = 70
+        case 667.0:
+            tapToPlay.fontSize = 77
+        case 736.0:
+            tapToPlay.fontSize = 70
+        case 1024.0:
+            tapToPlay.fontSize = 70
+        case 1366.0:
+            tapToPlay.fontSize = 70
+        default:
+            tapToPlay.fontSize = 60
+        }
+    }
+    
+    func iPhoneScreenSizes(){
+        let bounds = UIScreen.main.bounds
+        let height = bounds.size.height
+        
+        switch height {
+        case 568.0:
+            scoreLabel.fontSize = 50
+            recordLabel.fontSize = 30
+
+        case 667.0:
+            scoreLabel.fontSize = 55
+            recordLabel.fontSize = 33
+
+        case 736.0:
+            scoreLabel.fontSize = 61
+            recordLabel.fontSize = 37
+
+        case 1024.0:
+            scoreLabel.fontSize = 50
+            recordLabel.fontSize = 30
+
+            scoreLabel.position = CGPoint(x: size.width*0.38, y: size.height*0.32)
+            recordLabel.position = CGPoint(x: size.width*0.38, y: size.height*0.29)
+
+            
+        case 1366.0:
+            print("iPad 12")
+            scoreLabel.fontSize = 50
+            recordLabel.fontSize = 30
+            
+            scoreLabel.position = CGPoint(x: size.width*0.38, y: size.height*0.32)
+            recordLabel.position = CGPoint(x: size.width*0.38, y: size.height*0.29)
+
+            
+        default:
+            print("not an iPhone")
+            
+        }
+    }
 }

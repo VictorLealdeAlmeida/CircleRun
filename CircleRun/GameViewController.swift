@@ -12,29 +12,33 @@ import GameplayKit
 
 let defaults = UserDefaults.standard
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GameOverDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
-            
-            view.ignoresSiblingOrder = true
-            view.showsPhysics = false
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+        createScene()
         
         UIApplication.shared.isIdleTimerDisabled = true
 
+    }
+    
+    func createScene(){
+        if let view = self.view as! SKView? {
+            // Load the SKScene from 'GameScene.sks'
+            let scene = GameScene(fileNamed:"GameScene")
+            scene?.gameSceneDelegate = self
+            scene?.scaleMode = .aspectFill
+            
+            // Present the scene
+            view.presentScene(scene)
+            
+            
+            view.ignoresSiblingOrder = false
+            view.showsPhysics = false
+            view.showsFPS = false
+            view.showsNodeCount = false
+        }
     }
 
     override var shouldAutorotate: Bool {
@@ -56,5 +60,19 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func clearScene(){
+        let skView = self.view as? SKView
+        if skView?.scene != nil {
+            skView?.scene?.removeAllActions()
+            skView?.scene?.removeAllChildren()
+            skView?.presentScene(nil)
+        }
+    }
+    
+    func newScene(){
+        clearScene()
+        createScene()
     }
 }

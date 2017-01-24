@@ -25,6 +25,12 @@ extension GameScene{
                 obstacle = squareBad()
             }
         }
+        
+        if countObj%20 == 0 && speedObj > 2.0{
+            speedObj -= 0.1
+        }else if countObj%50 == 0 && speedObj > 1.5{
+            speedObj -= 0.05
+        }
 
         obstacle.run(SKAction.rotate(byAngle: randomAngle(), duration: speedObj))
         

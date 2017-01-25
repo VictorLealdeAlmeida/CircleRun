@@ -100,7 +100,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let background = SKAudioNode(fileNamed: "Contemplative.wav")
         background.autoplayLooped = true
         addChild(background)
-        background.run(SKAction.changeVolume(to: 0.07, duration: 0))
+        background.run(SKAction.changeVolume(to: 0.04, duration: 0))
 
         
         if(defaults.object(forKey: "record") == nil){

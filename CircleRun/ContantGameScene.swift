@@ -46,6 +46,14 @@ extension GameScene{
     }
     
     func playerDidCollideWithObjGood(_ playerP:SKSpriteNode, objO:SKSpriteNode) {
+        
+        //Audio
+        let background = SKAudioNode(fileNamed: "Ting.wav")
+        background.autoplayLooped = false
+        addChild(background)
+        background.run(SKAction.changeVolume(to: 0.07, duration: 0))
+        background.run(SKAction.play())
+        
         objO.removeFromParent()
         if playerStatus == 1{
             player.run(SKAction.scale(to: 0.00016*size.width, duration: 0.25))
@@ -98,6 +106,7 @@ extension GameScene{
     }
     
     func effectCollision(node : SKSpriteNode, fileNamed : String){
+        
         let starField = SKEmitterNode(fileNamed: fileNamed)
         starField?.position = node.position
         starField?.zPosition = -3
@@ -120,6 +129,7 @@ extension GameScene{
     }
     
     func effectCollisionColor() -> UIColor{
+
         
         switch currentObjBad {
         case ObjBad.Red:
@@ -211,6 +221,7 @@ extension GameScene{
     
     func clear(){
         if dead{
+            dead = false
             gameSceneDelegate?.newScene()
         }
     }

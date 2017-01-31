@@ -12,28 +12,20 @@ import CoreMotion
 
 extension GameScene{
     func motionPlayer(){
-        self.motionManager.startGyroUpdates(to: OperationQueue.current!) { (gyroData: CMGyroData?, NSError) in
-            self.moveRacket()
-            if(NSError != nil) {
-                print("\(NSError)")
+        
+        self.motionManager.startDeviceMotionUpdates()
+        self.motionManager.deviceMotionUpdateInterval = 0.1
+        self.motionManager.startDeviceMotionUpdates(to: .main){
+            (data, error) in
+            var moveX : CGFloat = 0.0
+            
+            if (self.player.position.y+CGFloat((self.motionManager.deviceMotion?.attitude.roll)!*50) >= -530 && self.player.position.y+CGFloat((self.motionManager.deviceMotion?.attitude.roll)!*50) <= 530){
+                moveX = CGFloat((self.motionManager.deviceMotion?.attitude.roll)!*75)
             }
-        }
-    }
-    
-    func moveRacket() {
-        
-        let yForce = self.motionManager.gyroData!.rotationRate.y
-        
-        let dxVelocity = self.player.physicsBody?.velocity.dx
-        self.player.physicsBody?.velocity.dx = dxVelocity! + 32*CGFloat(yForce)
-        
-        //"lock" the racket on the game area
-        
-        if (player.position.x) > self.frame.maxX - ((player.size.width)){
-            player.position.x = self.frame.maxX - ((player.size.width))
-        }
-        if (player.position.x) < self.frame.minX + ((player.size.width)){
-            player.position.x = self.frame.minX + ((player.size.width))
+            if ((self.player.position.x + moveX) < (self.size.width*0.5) - self.player.size.width/2) && ((self.player.position.x + moveX) > (-self.size.width*0.5) + self.player.size.width/2){
+                self.player.run(SKAction.move(to: CGPoint(x: self.player.position.x+moveX, y: self.player.position.y), duration: 0.1))
+            }
+            
         }
         
     }
